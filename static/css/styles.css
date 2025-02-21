@@ -1,0 +1,59 @@
+body {
+    background-color: #f8f9ea;
+    font-family: "Fredoka", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+          "wdth" 100;      
+}
+
+.view-color{
+    background-color: #D2DE32;
+}
+
+.delete{
+    background-color: #016A70;
+    color: white;
+}
+
+.next{
+    background-color: #D3ECA7;
+}
+
+.bigger{
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+.smaller{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.topic-name{
+    font-weight: 400;
+}
+
+.clickable-card{
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.clickable-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+.clickable-card:active{
+    transform: scale(0.98);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.delete-button {
+    top: 10px;
+    right: 10px;
+    z-index: 10; /* Ensures it's above the stretched link */
+}
+
+

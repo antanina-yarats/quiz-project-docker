@@ -1,0 +1,31 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5">
+  <h2 class="text-center mb-5 display-4"><%= it.topic.name %></h2>
+
+  <h4 class="bigger">Questions for this Topic:</h4>
+  
+  <% if (it.topic.questions && it.topic.questions.length > 0) { %>
+    <ul class="list-group my-5">
+      <% for (const question of it.topic.questions) { %>
+        <li class="list-group-item">
+          <!-- Dynamic link to open the question -->
+          <a href="/topics/<%= it.topic.id %>/questions/<%= question.id %>" class="text-decoration-none">
+            <%= question.question_text %> 
+          </a>
+        </li>
+      <% } %>
+    </ul>
+  <% } else { %>
+    <ul class="list-group my-5">
+      <li class="list-group-item">
+        <p class="text-center">No questions have been created yet.</p>
+      </li>
+    </ul>
+  <% } %>
+
+  <!-- Button to add a new question -->
+  <a href="/topics/<%= it.topic.id %>/add-question" class="btn view-color mt-3">Add a Question</a>
+
+  <a href="/topics" class="btn btn-secondary mt-3">Back to Topics</a>
+</div>

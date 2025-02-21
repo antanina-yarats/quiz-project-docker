@@ -1,0 +1,57 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="jumbotron text-center bg-light py-5 shadow-lg">
+
+  <h2 class="display-4">Welcome to the Quiz Project!</h2>
+
+  <p class="lead">This is your home page. Here you can start practicing quizzes or browse topics.</p>
+
+  <p><strong>Next steps:</strong> Add quizzes and challenge yourself!</p>
+
+  <a href="/topics" class="btn btn-lg view-color">View Topics</a>
+  <a href="/quiz" class="btn btn-success btn-lg">Start a Quiz</a>
+  
+</div>
+
+
+<!-- Statistics Section -->
+
+<div class="container my-5">
+  <h3 class="display-5 text-center mb-4">Basic Statistics</h3>
+
+  <div class="row justify-content-center">
+
+  <div class="col-md-4 text-center mb-3">
+      <div class="card shadow-lg">
+
+        <div class="card-body">
+          <h5 class="card-title">Total Topics</h5>
+          <p class="display-4"><%= it.topicsCount %></p>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="col-md-4 text-center mb-3">
+      <div class="card shadow-lg">
+
+        <div class="card-body">
+          <h5 class="card-title">Total Questions</h5>
+          <p class="display-4"><%= it.questionsCount %></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-4 text-center mb-3">
+      <div class="card shadow-lg">
+
+        <div class="card-body">
+          <h5 class="card-title">Total Answers</h5>
+          <p class="display-4"><%= it.answersCount %></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

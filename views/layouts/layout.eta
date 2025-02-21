@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= it.title || "Quiz Project" %></title>
+  
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<link rel="stylesheet" href="/static/css/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Header Section -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="/">Quiz Project</a>
+
+        <!-- Toggle Button for Small Screens -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Navbar Content (Links) -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/topics" id="navbarTopicsLink" >Topics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/quiz">Quiz</a>
+            </li>
+          </ul>
+
+          <!-- User Dropdown -->
+<ul class="navbar-nav">
+  <% if (it.currentUser) { %>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" 
+      href="#" id="userDropdown" 
+      role="button" 
+      data-toggle="dropdown">
+        <%= it.currentUser.email %> 
+      </a>
+      <div class="dropdown-menu 
+      dropdown-menu-right" 
+      id="userMenu">
+        <span class="dropdown-item-text"><%= it.currentUser.email %></span>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/user" id="profileLink">Profile</a>
+        <a class="dropdown-item" href="/auth/logout" id="logoutLink">Logout</a>
+      </div>
+    </li>
+  <% } else { %>
+    <li class="nav-item">
+      <a class="nav-link" href="/auth/login">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/auth/register">Register</a>
+    </li>
+  <% } %>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Section -->
+  <main class="container my-5 flex-grow-1">
+    <%~ it.body %>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-success text-white text-center py-3 mt-auto">
+    <p>&copy; 2025 Quiz Project. All rights reserved</p>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

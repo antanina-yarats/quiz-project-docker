@@ -1,0 +1,120 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4 bigger">Add a Question for Topic: <%= it.topicName %></h2>
+
+  <!--  Validation Errors -->
+  <% if(it.validationErrors) { %>
+    <div class="alert alert-danger">
+      <p><strong>Errors:</strong></p>
+      <ul>
+        <% for (const field in it.validationErrors) { %>
+          <% for (const errorMessage of Object.values(it.validationErrors[field])) { %>
+            <li><%= errorMessage %></li>
+          <% } %>
+        <% } %>
+      </ul>
+    </div>
+  <% } %> 
+
+  <!-- Form to Add a Question -->
+  <form method="POST" action="/topics/<%= it.topicId %>/add-question">
+
+    <!-- Preserve Entered Question -->
+    <div class="mb-4">
+      <label for="questionText" class="form-label">Question Text:</label>
+      <input 
+        type="text" 
+        id="questionText" 
+        name="questionText" 
+        class="form-control" 
+        placeholder="Enter your question"
+        value="<%=it.questionText || '' %>" 
+        required>
+    </div>
+
+    <!-- Options Table -->
+    <h5 class="mb-3">Options:</h5>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="smaller">Option Text</th>
+          <th class="text-center smaller">Is Correct?</th>
+          <th class="text-center smaller">Delete</th>
+        </tr>
+      </thead>
+      <tbody id="optionsList">
+        
+        <!-- First Option is Always Rendered -->
+        <tr>
+          <td>
+            <input type="text" class="form-control" name="options[]" id="option1" placeholder="Enter option" required>
+          </td>
+          <td class="text-center">
+            <input type="radio" name="isCorrect" id="correct1" value="0" required>
+          </td>
+          <td class="text-center">
+            <button type="button" class="btn btn-danger btn-sm deleteOption">Delete</button>
+          </td>
+        </tr>
+
+        <% if (it.options && it.options.length > 0) { %>
+          <% for (let i = 0; i < it.options.length; i++) { %>
+            <tr>
+              <td>
+                <input type="text" class="form-control" name="options[]" placeholder="Enter option" required>
+              </td>
+              <td class="text-center">
+                <input type="radio" name="isCorrect" value="<%= i+1 %>" required>
+              </td>
+              <td class="text-center">
+                <button type="button" class="btn btn-danger btn-sm deleteOption">Delete</button>
+              </td>
+            </tr>
+          <% } %>
+        <% } %>
+
+      </tbody>
+    </table>
+
+    <!--  Add Button -->
+    <button type="button" id="addOptionButton" class="btn btn-info mb-4">Add Another Option</button>
+
+    <!-- Submit and Back Buttons -->
+    <div class="d-flex justify-content-between">
+      <button type="submit" id="saveQuestionBtn" class="btn btn-success">Save Question</button>
+    </div>
+  </form>
+
+  <div class="d-flex justify-content-center mt-4">
+    <a href="/topics/<%= it.topicId %>" class="btn btn-secondary my-5">Back to Questions List</a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const optionsList = document.getElementById("optionsList");
+    const addOptionButton = document.getElementById("addOptionButton");
+
+    let optionIndex = <%= it.options ? it.options.length + 1 : 1 %>; // Start index at 1 to avoid conflicts
+
+    // Add a new option row
+    addOptionButton.addEventListener("click", () => {
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+            <td><input type="text" class="form-control" name="options[]" placeholder="Enter option" required></td>
+            <td class="text-center"><input type="radio" name="isCorrect" value="${optionIndex}" required></td>
+            <td class="text-center"><button type="button" class="btn btn-danger btn-sm deleteOption">Delete</button></td>
+        `;
+        optionsList.appendChild(newRow);
+        optionIndex++; 
+    });
+
+    //  Delete a row 
+    optionsList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("deleteOption")) {
+            e.target.closest("tr").remove();
+        }
+    });
+});
+</script>

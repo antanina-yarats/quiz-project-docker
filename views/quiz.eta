@@ -1,0 +1,13 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4 display-4">Quiz Topics</h2>
+
+  
+  <div id="quiz-topics" class="row">
+  
+    <!-- Topics are rendered here by client-side JavaScript -->
+  </div>
+</div>
+
+<script src="/static/js/quiz.js"></script>

@@ -1,0 +1,7 @@
+# Ignore dependencies & caches
+node_modules/
+app-cache/
+deno.lock
+
+# Ignore environment variables
+*.env

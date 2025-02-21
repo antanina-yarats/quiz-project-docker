@@ -1,0 +1,52 @@
+
+services:
+  quiz-project:
+    build: .
+    image: quiz-project_img
+    restart: "no"
+    volumes:
+      - .:/app
+      - ./app-cache/:/app-cache
+    ports:
+      - 7777:7777
+    depends_on:
+      - database
+      - flyway
+    env_file:
+      - project.env
+
+  database:
+    container_name: quiz-project-database
+    image: postgres:14.1
+    restart: "no"
+    env_file:
+      - project.env
+
+  flyway:
+    image: flyway/flyway:10.18.0-alpine
+    depends_on:
+      - database
+    volumes:
+      - ./flyway/sql:/flyway/sql
+    command: -connectRetries=60 -baselineOnMigrate=true migrate
+    env_file:
+      - project.env
+
+  e2e-playwright:
+    image: mcr.microsoft.com/playwright:v1.50.1
+    entrypoint: "/bin/true" # Prevent startup on docker-compose up
+    network_mode: host
+    depends_on:
+      - quiz-project
+    volumes:
+      - ./tests:/tests
+
+  deno-test:
+    image: denoland/deno:alpine-1.37.0
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: "/bin/true" # Prevents tests from running automatically
+    command: ["deno", "test", "--allow-read", "--allow-env", "unit-tests/"]
+    depends_on:
+      - quiz-project

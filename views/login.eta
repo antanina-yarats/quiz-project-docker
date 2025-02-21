@@ -1,0 +1,47 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Sign In</h2>
+
+  <% if (it.errorMessage) { %>
+    <div class="alert alert-danger">
+      <strong>Error:</strong> <%= it.errorMessage %>
+    </div>
+  <% } %>
+  
+  <!-- Sign-In Form -->
+  <form method="POST" action="/auth/login">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        class="form-control" 
+        placeholder="Enter your email"
+        value="<%= it.email ? it.email : '' %>" 
+        required
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input 
+        type="password" 
+        id="password" 
+        name="password" 
+        class="form-control" 
+        placeholder="Enter your password"
+        required
+      >
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Sign In</button>
+  </form>
+
+  <!-- Redirect to Registration Page -->
+  <div class="text-center mt-3">
+    <p>Not registered yet?</p>
+    <a href="/auth/register" class="btn btn-info">Register</a>
+  </div>
+</div>

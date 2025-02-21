@@ -1,0 +1,41 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Questions for Topic: <%= it.title %></h2>
+
+  <div class="card shadow-lg">
+    <div class="card-body">
+
+      <% if (it.questions && it.questions.length > 0) { %>
+
+        <ul class="list-group">
+          <% for (const question of it.questions) { %>
+            <li class="list-group-item">
+            
+              <a href="/topics/<%= it.topicId %>/questions/<%= question.id %>" class="text-decoration-none">
+                <%= question.question_text %>  
+              </a>
+
+              <form method="POST" action="/topics/<%= it.topicId %>/questions/<%= question.id %>/delete" style="display:inline;">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-info btn-sm ml-3">Delete</button>
+              </form>
+
+            </li>
+          <% } %>
+        </ul>
+      <% } else { %>
+        <p>No questions found for this topic.</p>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+  <form method="POST" action="/topics/<%= it.topicId %>/questions> 
+    <button type="submit" class="btn btn-primary mt-3">Add question</button>
+</form>
+
+      <a href="/topics/<%= topicId %>" class="btn btn-secondary mt-3">Back to Topic</a>
+    </div>
+  </div>
+</div>

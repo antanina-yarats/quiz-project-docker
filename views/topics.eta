@@ -1,0 +1,71 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5">
+  <h2 class="bigger text-center mb-4">Topics</h2>
+
+  <!-- Add Topic Form -->
+  <% if (it.currentUser && it.currentUser.email === "admin@admin.com") { %>
+    
+    <% if (it.validationErrors && Object.keys(it.validationErrors).length > 0) { %>
+    <div class="alert alert-danger">
+        <p><strong>Errors:</strong></p>
+        <ul>
+            <% for (const field in it.validationErrors) { %>
+                <% for (const error of Object.values(it.validationErrors[field])) { %> 
+                    <li><%= error %></li>
+                <% } %>
+            <% } %>
+        </ul>
+    </div>
+    <% } %>
+
+    <form method="POST" action="/topics/add" class="mb-4">
+      <div class="input-group">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="topicName"
+          placeholder="Enter new topic name" 
+          value="<%= it.previousInput || '' %>"
+          name="topicName" 
+          required>
+
+        <div class="input-group-append">
+          <button class="btn btn-success" type="submit">Add Topic</button>
+        </div>
+      </div>
+    </form>
+  <% } %> 
+  
+
+  <!-- Topics List -->
+  <% if (it.topics.length === 0) { %>
+    <div class="alert alert-info text-center">
+      <p>No topics available. Please add a new topic.</p>
+    </div>
+  <% } else { %>
+    <div class="row">
+      <% for (const topic of it.topics) { %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card shadow-lg clickable-card position-relative">
+            <div class="card-body position-relative">
+              <!-- Clickable area for topic -->
+              <a href="/topics/<%= topic.id %>" class="stretched-link text-dark text-decoration-none">
+                <h4 class="card-title my-4 topic-name"><%= topic.name %></h5>
+              </a>
+
+              <!-- Admin-only Delete button (correctly positioned inside card) -->
+              <% if (it.currentUser && it.currentUser.email === "admin@admin.com") { %>
+                <form method="POST" action="/topics/<%= topic.id %>/delete" 
+                      class="position-absolute delete-button">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button type="submit" class="btn delete btn-sm">✖</button>
+                </form>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
+</div>

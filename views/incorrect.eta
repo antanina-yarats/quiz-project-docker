@@ -1,0 +1,7 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5 text-center">
+  <h2 class="text-danger">Incorrect!</h2>
+  <p>Oops! That was not the correct answer. Try again!</p>
+  <a href="/topics/<%= it.topicId %>/questions/<%= it.questionId %>" class="btn delete">Back to Question</a>
+</div>

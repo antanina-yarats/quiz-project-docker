@@ -1,0 +1,7 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5 text-center">
+  <h2 class="text-success">Correct!</h2>
+  <p>Great job! You chose the correct answer.</p>
+  <a href="/topics/<%= it.topicId %>/questions/<%= it.questionId %>" class="btn delete">Back to Question</a>
+</div>

@@ -1,0 +1,32 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4 topic-name">Question: <%= it.question.question_text %></h2>  
+
+  <form method="POST" action="/topics/<%= it.topicId %>/questions/<%= it.question.id %>">
+  <h4 mt-4>Options:</h4>
+  <ul class="list-group my-5">
+    <% for (const option of it.options) { %>  
+      <li class="list-group-item">
+        <input type="radio" name="selectedOption" value="<%= option.id %>" required />
+        <label><%= option.option_text %></label> 
+      </li>
+    <% } %>
+  </ul>
+  <button type="submit" class="btn view-color mt-3">Submit Answer</button>
+</form>
+
+
+<div class="d-flex flex-column align-items-start">
+  
+
+  <a href="/topics/<%= it.topicId %>" class="btn btn-secondary mt-3">Back to Questions</a>
+
+  <form method="POST" action="/topics/<%= it.topicId %>/questions/<%= it.question.id %>/delete" style="display: inline;">
+    <button type="submit" class="btn delete mt-5">Delete Question</button>
+  </form>
+
+
+</div>
+
+</div>
