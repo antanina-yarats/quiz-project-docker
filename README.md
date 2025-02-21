@@ -84,15 +84,13 @@ If tests are **disabled by default** (i.e., `entrypoint: "/bin/true"` is set in 
 docker compose run --rm deno-test deno test --allow-read --allow-env unit-tests/
 ```
 
-### **🔹 Option 2: Run Tests Directly on  Local Machine**
+### **Option 2: Run Tests Directly on  Local Machine**
 
 ```bash
 
 deno test --allow-read --allow-env unit-tests/
 
 ```
-
-
 
 ## **7 🧪 Run Playwright Tests**
 
