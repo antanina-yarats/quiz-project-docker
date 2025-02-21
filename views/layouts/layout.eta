@@ -20,8 +20,6 @@
 
 <body class="d-flex flex-column min-vh-100">
 
- <div id="particles-js"></div>
-
     <!-- Header Section -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
@@ -84,7 +82,6 @@
   </header>
 
   <!-- Main Content Section -->
-
   <main class="container my-5 flex-grow-1">
     <%~ it.body %>
   </main>
@@ -99,25 +96,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-   window.addEventListener("load", function () {
-       particlesJS("particles-js", {
-           particles: {
-               number: { value: 80, density: { enable: true, value_area: 800 } },
-               shape: { type: "circle" },
-               opacity: { value: 0.5 },
-               size: { value: 3 },
-               move: { enable: true, speed: 2 }
-           },
-           interactivity: {
-               events: { onhover: { enable: true, mode: "repulse" } },
-               modes: { repulse: { distance: 100 } }
-           }
-       });
-   });
-</script>
-
-
+  
 </body>
 </html>
