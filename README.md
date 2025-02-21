@@ -27,7 +27,7 @@ You can use the following **hardcoded admin credentials** to access the applicat
 ## 🚀 Live Demo
 The application is hosted on Render. You can check out the live version here:
 
-🔗 **[Live App](<future render.com link>)**
+🔗 **[Live App](<https://quiz-project-docker.onrender.com/>)**
 
 ---
 
