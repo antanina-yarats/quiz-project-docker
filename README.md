@@ -1,5 +1,17 @@
 # 📚 Drill and Practice - Quiz Application
 
+## 📸 Project Screenshots
+
+### 🏠 Home Page
+![Home Page](https://cdn.glitch.global/96cdad8f-d9df-4fdc-be34-6c2015b041d4/Screenshot%202025-02-21%20at%2021.00.40.png?v=1740164690698)
+
+### 📂 Topics Page
+![Topics Page](https://cdn.glitch.global/96cdad8f-d9df-4fdc-be34-6c2015b041d4/Screenshot%202025-02-21%20at%2021.01.47.png?v=1740164683116)
+
+### ❓ Add Question Page
+![Add Question](https://cdn.glitch.global/96cdad8f-d9df-4fdc-be34-6c2015b041d4/Screenshot%202025-02-21%20at%2021.02.41.png?v=1740164676523)
+
+
 This web application allows users to create and manage one-choice quiz questions within various topics. Users can answer these questions and view basic statistics, including:
 
 - Total number of available topics.
