@@ -49,24 +49,24 @@ docker compose build
 ```
 
 ## **4 Configure the Environment Variables**
-# Database Configuration for PostgreSQL (running inside the "database" container)
+### Database Configuration for PostgreSQL (running inside the "database" container)
 POSTGRES_USER=username  # Set your database username
 POSTGRES_PASSWORD=password  # Set your database password
 POSTGRES_DB=database  # Database name
 
-# Database Configuration for Flyway (used for database migrations)
+### Database Configuration for Flyway (used for database migrations)
 FLYWAY_USER=username  # Use the same username as POSTGRES_USER
 FLYWAY_PASSWORD=password  # Use the same password as POSTGRES_PASSWORD
 FLYWAY_URL=jdbc:postgresql://database:5432/database  
 
-# PostgreSQL Driver Configuration
+### PostgreSQL Driver Configuration
 PGUSER=username  # Use the same username as POSTGRES_USER
 PGPASSWORD=password  # Use the same password as POSTGRES_PASSWORD
 PGHOST=your_pg_host  
 PGPORT=5432  
 PGDATABASE=database  # Use the same database name as POSTGRES_DB
 
-# Deno Cache Location (Avoids Reloading Dependencies)
+### Deno Cache Location (Avoids Reloading Dependencies)
 DENO_DIR=/app-cache
 
 ## **5 Start the Application**
