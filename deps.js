@@ -4,7 +4,7 @@ export { validate, required, isEmail, minLength } from "https://deno.land/x/vali
 export * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 export { assertEquals, assertNotEquals } from "https://deno.land/std@0.200.0/assert/mod.ts";
 
-export { default as postgres } from "https://deno.land/x/postgresjs@v3.4.2/mod.js";
+export { postgres } from "https://deno.land/x/postgresjs@v3.4.2/mod.js";
 export { config } from "https://deno.land/x/dotenv/mod.ts";
 export { configure, renderFile } from "https://deno.land/x/eta@v2.0.1/mod.ts";
 export { serveFile } from "https://deno.land/std@0.203.0/http/file_server.ts";
