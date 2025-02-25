@@ -41,6 +41,8 @@ The application is hosted on Render. You can check out the live version here:
 
 🔗 **[Live App](<https://quiz-project-docker.onrender.com/>)**
 
+Free instance is used for deployment, so it might spin down with inactivity, which can delay requests by 50 seconds or more.
+
 ---
 
 ## 🛠️ **Run Locally with Docker**
