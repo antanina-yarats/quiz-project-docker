@@ -51,8 +51,11 @@ Follow these steps to set up and run the application on your local machine:
 https://github.com/antanina-yarats/quiz-project-docker.git
 ```
 ## **2 Navigate to the Project Directory**
+
+After cloning the repository, simply enter the project directory:
+
 ```bash
-cd drill-and-practice
+cd <your-cloned-repo-name>
 ```
 
 ## **3 Build the Docker Containers**
